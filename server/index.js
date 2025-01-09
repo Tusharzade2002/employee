@@ -9,7 +9,12 @@ app.use(express.json());
 
 
 const PORT=8001;
-
+ app.get("/health",(req,res)=>{
+    res.json({
+        success:true,
+        message:"server is running"
+    })
+ })
 
  app.listen(PORT,()=>{
     console.log(`server is running on  port: ${PORT}`);
