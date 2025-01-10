@@ -7,8 +7,8 @@ dotenv.config();
 app.use(cors());
 app.use(express.json());
 
-import { error } from './Controller/other';
-import { health } from './Controller/health';
+import { error } from './Controller/other.js';
+import { health } from './Controller/health.js';
 
 const PORT=8001;
  app.get("/health",health)
