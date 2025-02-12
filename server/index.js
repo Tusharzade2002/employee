@@ -9,10 +9,12 @@ app.use(express.json());
 
 import { error } from './Controller/other.js';
 import { health } from './Controller/health.js';
+import {GetEmployee ,PostEmployee} from './Controller/Employee.js'
 
 const PORT=8001;
- app.get("/health",health)
-
+ app.get("/health",health);
+ app.get("/employes",GetEmployee);
+ app.post("/employes",PostEmployee)
 
  app.get("*",error)
  app.listen(PORT,()=>{
