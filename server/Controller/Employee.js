@@ -62,7 +62,33 @@ const PostEmployee=async(req,res)=>{
 
 }
 
+const DeleteEmployee=async(req,res)=>{
+ const {EmpId} =req.params;
+ let EmpIndex = -1;
+
+ EMPLOYEE.map((emplo ,index)=>{
+    if(emplo.EmpId == EmpId){
+        EmpIndex = index
+    }
+ })
+
+ if(EmpIndex == -1){
+    return res.status(400).json({
+                success:false,
+                message:"Employee Not Found"
+    })
+ }
+
+  EMPLOYEE.splice(EmpId,1);
+
+  res.json({
+        success:true,
+        message:"Employee Deleted successfully"
+  })
+  
+}
+
 
 export {
-    GetEmployee ,PostEmployee
+    GetEmployee ,PostEmployee,DeleteEmployee
 }
