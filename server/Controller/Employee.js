@@ -64,7 +64,7 @@ const PostEmployee=async(req,res)=>{
 
 const DeleteEmployee=async(req,res)=>{
  const {EmpId} =req.params;
- let EmpIndex = -1;
+ let EmpIndex =-1;
 
  EMPLOYEE.map((emplo ,index)=>{
     if(emplo.EmpId == EmpId){
@@ -73,14 +73,12 @@ const DeleteEmployee=async(req,res)=>{
  })
 
  if(EmpIndex == -1){
-    return res.status(400).json({
+    return res.json({
                 success:false,
                 message:"Employee Not Found"
     })
  }
-
-  EMPLOYEE.splice(EmpId,1);
-
+  EMPLOYEE.splice(EmpIndex,1);
   res.json({
         success:true,
         message:"Employee Deleted successfully"
@@ -88,7 +86,60 @@ const DeleteEmployee=async(req,res)=>{
   
 }
 
+const PutStudent=async(req,res)=>{
+    const {EmpId} = req.params;
+    const {name,age,city} = req.body;
+    let EmpIndex =-1;
+
+    EMPLOYEE.map((stud,index)=>{
+     if(stud.EmpId==EmpId){
+         EmpIndex = index
+     }
+  })  
+
+  if(EmpIndex == -1){
+     return res.json({
+         success:false,
+         message:"employee Not found"
+     })
+  }
+
+   const employe={
+    EmpId,
+    name,
+    age,
+    city,
+   }
+
+   EMPLOYEE[EmpIndex]=employe;
+   
+   res.json({
+    success:true,
+    data:employe,
+    message:"employe update sucessfully"
+   })
+}
+  
+// const getStudentById=async(req,res)=>{
+//     const {EmpId}=req.params;
+
+//     let EmpIndex =-1;
+
+//     EMPLOYEE.map((employe,index)=>{
+//         if(employe.EmpId == EmpId){
+//             EmpIndex=index;
+//         }
+//     })
+
+//     if(EmpIndex =-1){
+//         return res.json({
+//             success:false,
+//             message:"employee Not found"
+//         })
+//     }
+// }
+
 
 export {
-    GetEmployee ,PostEmployee,DeleteEmployee
+    GetEmployee ,PostEmployee,DeleteEmployee,PutStudent,
 }
