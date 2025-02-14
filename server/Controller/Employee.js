@@ -120,26 +120,33 @@ const PutStudent=async(req,res)=>{
    })
 }
   
-// const getStudentById=async(req,res)=>{
-//     const {EmpId}=req.params;
+const getEmployeeById=async(req,res)=>{
+    const {EmpId}=req.params;
 
-//     let EmpIndex =-1;
+    let EmpIndex =-1;
 
-//     EMPLOYEE.map((employe,index)=>{
-//         if(employe.EmpId == EmpId){
-//             EmpIndex=index;
-//         }
-//     })
+    EMPLOYEE.map((employe,index)=>{
+        if(employe.EmpId == EmpId){
+            EmpIndex=index;
+        }
+    })
 
-//     if(EmpIndex =-1){
-//         return res.json({
-//             success:false,
-//             message:"employee Not found"
-//         })
-//     }
-// }
+    if(EmpIndex ==-1){
+        return res.json({
+            success:false,
+            message:"employee Not found"
+        })
+    }
+   const employeee=EMPLOYEE[EmpIndex];
+   res.json({
+    success:true,
+    data:employeee,
+    message:"employee update successfully"
+   })
+
+}
 
 
 export {
-    GetEmployee ,PostEmployee,DeleteEmployee,PutStudent,
+    GetEmployee ,PostEmployee,DeleteEmployee,PutStudent,getEmployeeById
 }

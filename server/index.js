@@ -9,7 +9,7 @@ app.use(express.json());
 
 import { error } from './Controller/other.js';
 import { health } from './Controller/health.js';
-import {GetEmployee ,PostEmployee,DeleteEmployee,PutStudent} from './Controller/Employee.js'
+import {GetEmployee ,PostEmployee,DeleteEmployee,PutStudent,getEmployeeById} from './Controller/Employee.js'
 
 const PORT=8001;
  app.get("/health",health);
@@ -17,7 +17,7 @@ const PORT=8001;
  app.post("/employes",PostEmployee)
  app.delete("/employes/:EmpId",DeleteEmployee)
  app.put("/employes/:EmpId",PutStudent)
- app.get("/employes/:EmpId",)
+ app.get("/employes/:EmpId",getEmployeeById)
 
  app.get("*",error)
  app.listen(PORT,()=>{
